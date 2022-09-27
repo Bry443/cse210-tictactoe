@@ -60,6 +60,15 @@
     /// <returns></returns>
     static bool IsWinner(List<string> board, string player)
     {
+        if (board[0] == player && board[1] == player && board[2] == player)
+        || (board[3] == player && board[4] == player && board[5] == player)
+        || (board[6] == player && board[7] == player && board[8] == player)
+        || (board[0] == player && board[3] == player && board[6] == player)
+        || (board[1] == player && board[4] == player && board[7] == player)
+        || (board[2] == player && board[5] == player && board[8] == player) 
+        || (board[0] == player && board[4] == player && board[8] == player)
+        || (board[2] == player && board[4] == player && board[6] == player){
+            return true;}
         return false;
     }
 
@@ -68,23 +77,64 @@
     /// <returns>True if the board is full.</returns>
     static bool IsTie(List<string> board)
     {
-        return false;
-    }
+        foreach(string value in board)
+        {
+            if(char.IsDigit(value[0]))
+            {
+                return false;
+            }
+        }
+        return true;
+        }
 
     /// <summary>Cycles through the players (from x to o and o to x)</summary>
     /// <param name="currentPlayer">The current players sign (x or o)</param>
     /// <returns>The next players sign (x or o)</returns>
     static string GetNextPlayer(string currentPlayer)
     {
-        return "x";
-    }
+        if (currentPlayer == "o")
+            {
+                return "x";
+            }
+                return "o";}
 
+    /**
     /// <summary>Gets the 1-based spot number associated with the user's choice.</summary>
     /// <param name="currentPlayer">The sign (x or o) of the current player.</param>
     /// <returns>A 1-based spot number (not a 0-based index)</returns>
+    **/
     static int GetMoveChoice(string currentPlayer)
     {
-        return 1;
+        Console.WriteLine("Where would you like to go?");
+        string userChoice = Console.ReadLine();
+        foreach(string value in board)
+        {
+            bool properDigit = false;
+            if (userChoice == "1")
+            || (userChoice == "2")
+            || (userChoice == "3")
+            || (userChoice == "4")
+            || (userChoice == "5")
+            || (userChoice == "6")
+            || (userChoice == "7")
+            || (userChoice == "8")
+            || (userChoice == "9")
+            {
+                properDigit = true;
+            }
+            if (properDigit)
+                {
+                foreach(string value in board)
+                {
+                    if(userChoice == (value[0]))
+                    {
+                        choice = Int16.Parse(userChoice);
+                        return choice;
+                    }
+                }
+                return true;
+                }
+        }
     }
 
     /// <summary>
@@ -96,6 +146,6 @@
     /// <param name="currentPlayer">The current player's sign (x or o)</param>
     static void MakeMove(List<string> board, int choice, string currentPlayer)
     {
-
+     
     }
 }
