@@ -68,7 +68,8 @@
         || (board[2] == player && board[5] == player && board[8] == player) 
         || (board[0] == player && board[4] == player && board[8] == player)
         || (board[2] == player && board[4] == player && board[6] == player){
-            return true;}
+            return true;
+            }
         return false;
     }
 
@@ -103,7 +104,7 @@
     /// <param name="currentPlayer">The sign (x or o) of the current player.</param>
     /// <returns>A 1-based spot number (not a 0-based index)</returns>
     **/
-    static int GetMoveChoice(string currentPlayer)
+    static int GetMoveChoice(string currentPlayer, List<string> board)
     {
         Console.WriteLine("Where would you like to go?");
         string userChoice = Console.ReadLine();
@@ -118,7 +119,7 @@
             || (userChoice == "6")
             || (userChoice == "7")
             || (userChoice == "8")
-            || (userChoice == "9")
+            || (userChoice == "9");
             {
                 properDigit = true;
             }
