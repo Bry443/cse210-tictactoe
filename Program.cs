@@ -1,4 +1,7 @@
-﻿class TicTacToe
+﻿// Tic-Tac-Toe game
+// Brycen Taylor CSE210
+
+class TicTacToe
 {
     static void Main(string[] args)
     {
