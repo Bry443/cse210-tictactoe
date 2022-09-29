@@ -5,8 +5,10 @@ class TicTacToe
 {
     static void Main(string[] args)
     {
-
-        List<string> board = GetNewBoard();
+// datatype class 'Board'
+// new instance name 'board
+// create new one of those classes 'Board()'
+        Board board = new Board();
         string currentPlayer = "x";
 
         while (!IsGameOver(board))
@@ -19,7 +21,7 @@ class TicTacToe
             currentPlayer = GetNextPlayer(currentPlayer);
         }
 
-        DisplayBoard(board);
+        board.print();
         Console.WriteLine("Good game. Thanks for playing!");
     }
 
@@ -27,9 +29,9 @@ class TicTacToe
     /// <returns>A list of 9 strings representing each square.</returns>
     static List<string> GetNewBoard()
     {
-        return new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        //return new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9"};
         //new List<string> board = new List<string>();
-        //for (int i 1; i<=9; i++)
+        //for (int i = 1; i< = 9; i += 1)
         //{
         //  board.Add(i.ToString());
         //}
@@ -40,11 +42,6 @@ class TicTacToe
     /// <param name="board">The board</param>
     static void DisplayBoard(List<string> board)
     {
-        Console.WriteLine($"{board[0]}|{board[1]}|{board[2]}");
-        Console.WriteLine("-+-+-");
-        Console.WriteLine($"{board[3]}|{board[4]}|{board[5]}");
-        Console.WriteLine("-+-+-");
-        Console.WriteLine($"{board[6]}|{board[7]}|{board[8]}");
     }
 
     /// <summary>
@@ -63,17 +60,20 @@ class TicTacToe
     /// <returns></returns>
     static bool IsWinner(List<string> board, string player)
     {
-        if (board[0] == player && board[1] == player && board[2] == player)
-        || (board[3] == player && board[4] == player && board[5] == player)
-        || (board[6] == player && board[7] == player && board[8] == player)
-        || (board[0] == player && board[3] == player && board[6] == player)
-        || (board[1] == player && board[4] == player && board[7] == player)
-        || (board[2] == player && board[5] == player && board[8] == player) 
-        || (board[0] == player && board[4] == player && board[8] == player)
-        || (board[2] == player && board[4] == player && board[6] == player){
-            return true;
-            }
-        return false;
+        bool isWinner = false;
+        if ((board[0] == player && board[1] == player && board[2] == player)
+            || (board[3] == player && board[4] == player && board[5] == player)
+            || (board[6] == player && board[7] == player && board[8] == player)
+            || (board[0] == player && board[3] == player && board[6] == player)
+            || (board[1] == player && board[4] == player && board[7] == player)
+            || (board[2] == player && board[5] == player && board[8] == player) 
+            || (board[0] == player && board[4] == player && board[8] == player)
+            || (board[2] == player && board[4] == player && board[6] == player)
+            )
+        {
+            isWinner = true;
+        }
+        return isWinner;
     }
 
     /// <summary>Determines if the board is full with no more moves possible.</summary>
@@ -110,11 +110,10 @@ class TicTacToe
     static int GetMoveChoice(string currentPlayer, List<string> board)
     {
         Console.WriteLine("Where would you like to go?");
-        string userChoice = Console.ReadLine();
-        foreach(string value in board)
+        string? userChoice = Console.ReadLine();
         {
             bool properDigit = false;
-            if (userChoice == "1")
+            if ((userChoice == "1")
             || (userChoice == "2")
             || (userChoice == "3")
             || (userChoice == "4")
@@ -122,12 +121,10 @@ class TicTacToe
             || (userChoice == "6")
             || (userChoice == "7")
             || (userChoice == "8")
-            || (userChoice == "9");
-            {
+            || (userChoice == "9")){
                 properDigit = true;
             }
-            if (properDigit)
-                {
+            if (properDigit == true){
                 foreach(string value in board)
                 {
                     if(userChoice == (value[0]))
